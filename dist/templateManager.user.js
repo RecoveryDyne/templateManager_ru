@@ -1258,15 +1258,15 @@
             this.overlay.style.opacity = "0";
             let div = document.createElement('div');
             div.className = "settingsWrapper";
-            div.appendChild(createLabel(".json Template settings - v" + GM.info.script.version));
+            div.appendChild(createLabel("Менеджер темплейтов.json - v" + GM.info.script.version));
             div.appendChild(document.createElement('br'));
-            div.appendChild(createButton("Reload the template", () => manager.initOrReloadTemplates(false, this.contactInfoEnabled)));
+            div.appendChild(createButton("Перезагрузить темплейты", () => manager.initOrReloadTemplates(false, this.contactInfoEnabled)));
             div.appendChild(document.createElement('br'));
-            div.appendChild(createSlider("Templates to load", "4", (n) => {
+            div.appendChild(createSlider("Количество темплейтов", "4", (n) => {
                 manager.templatesToLoad = (n + 1) * MAX_TEMPLATES / 5;
             }));
             div.appendChild(document.createElement('br'));
-            div.appendChild(createButton("Generate new randomness", () => {
+            div.appendChild(createButton("Сгенерировать случайность(хуйня какая-то)", () => {
                 let currentRandomness = manager.randomness;
                 while (true) {
                     manager.randomness = Math.random();
@@ -1275,7 +1275,7 @@
                 }
             }));
             div.appendChild(document.createElement('br'));
-            div.appendChild(createSlider("Dither amount", "1", (n) => {
+            div.appendChild(createSlider("Сила смещения(хуйня какая-то)", "1", (n) => {
                 var _a;
                 manager.percentage = 1 / (n / 10 + 1);
                 if (this.previewModeEnabled) {
@@ -1288,15 +1288,15 @@
                 }
             }));
             div.appendChild(document.createElement('br'));
-            div.appendChild(createBoldCheckbox('', "Show contact info besides templates", this.contactInfoEnabled, (a) => {
+            div.appendChild(createBoldCheckbox('', "Показать автора темплейта", this.contactInfoEnabled, (a) => {
                 manager.setContactInfoDisplay(a);
                 this.contactInfoEnabled = a;
             }));
-            this.previewModeCheckbox = div.appendChild(createBoldCheckbox('', "Preview template in full", this.previewModeEnabled, (a) => {
+            this.previewModeCheckbox = div.appendChild(createBoldCheckbox('', "Показать полностью темплейт", this.previewModeEnabled, (a) => {
                 manager.setPreviewMode(a);
                 this.previewModeEnabled = a;
             }));
-            div.appendChild(createBoldCheckbox('', "Hide template", this.hideTemplate, (a) => {
+            div.appendChild(createBoldCheckbox('', "Спрятать темплейт", this.hideTemplate, (a) => {
                 manager.hideTemplate(a);
                 this.hideTemplate = a;
             }));
@@ -1369,13 +1369,13 @@
                 .then((value) => {
                 let linkLabel = document.createElement('label');
                 let updateLinkLabel = (url) => {
-                    linkLabel.innerHTML = `Current sound: <a target="_blank" rel="noopener noreferrer" href="${url}">${url}</a>`;
+                    linkLabel.innerHTML = `Текущий звук: <a target="_blank" rel="noopener noreferrer" href="${url}">${url}</a>`;
                 };
                 updateLinkLabel(value);
-                audioDiv.appendChild(createLabel('Set new notification sound:'));
+                audioDiv.appendChild(createLabel('Установить новый звук уведомления:'));
                 audioDiv.appendChild(document.createElement('br'));
                 audioDiv.appendChild(linkLabel);
-                audioDiv.appendChild(createTextInput('Apply', 'Sound URL', (newSound, input) => {
+                audioDiv.appendChild(createTextInput('Применить', 'URL звука', (newSound, input) => {
                     if (!newSound.trim().length) {
                         return;
                     }
@@ -1397,7 +1397,7 @@
             }
             GM.getValue(`${window.location.host}_alwaysLoad`).then(value => {
                 let templates = value ? JSON.parse(value) : [];
-                let templateAdder = createTextInput("Always load", "Template URL", async (tx) => {
+                let templateAdder = createTextInput("Загрузить", "URL темплейта", async (tx) => {
                     let url = new URL(tx);
                     let template = findJSONTemplateInURL(url) || url.toString();
                     if (templates.includes(template))
@@ -1409,7 +1409,7 @@
                 });
                 this.templateLinksWrapper.appendChild(templateAdder);
                 if (templates.length > 0) {
-                    this.templateLinksWrapper.appendChild(createLabel("Click to remove template from always loading"));
+                    this.templateLinksWrapper.appendChild(createLabel("Нажмите, чтобы удалить темплейт с загрузки"));
                     this.templateLinksWrapper.appendChild(document.createElement('br'));
                 }
                 for (let i = 0; i < templates.length; i++) {
