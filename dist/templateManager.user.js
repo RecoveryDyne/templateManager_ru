@@ -1,8 +1,8 @@
 
 // ==UserScript==
 // @namespace		littleendu.xyz
-// @downloadURL		https://github.com/osuplace/templateManager_ru/raw/main/dist/templateManager.user.js
-// @updateURL		https://github.com/osuplace/templateManager_ru/raw/main/dist/templateManager.user.js
+// @downloadURL		https://github.com/itsrec0very/templateManager_ru/raw/main/dist/templateManager.user.js
+// @updateURL		https://github.com/itsrec0very/templateManager_ru/raw/main/dist/templateManager.user.js
 // @match			https://pxls.space/
 // @match			https://new.reddit.com/r/place/*
 // @match			https://www.reddit.com/r/place/*
@@ -15,9 +15,9 @@
 // @grant			GM.setValue
 // @grant			GM.getValue
 // @connect			*
-// @name			template-manager
+// @name			Менеджер темплейтов
 // @version			0.6.3
-// @description		Manages your templates on various canvas games
+// @description		Управляет вашими темплейтами в различных пиксельбаттлах
 // @author			LittleEndu, Mikarific, April
 // @license			MIT
 //
